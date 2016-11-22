@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title>Noob Shopping List</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+  	<div class="container" ng-controller="ShopCtrl">
+  	  <h1>Noob Shopping List</h1><span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+  		<div class="main">
+	  		<ul class="unstyled">
+	  			<li ng-repeat="item in items">
+	  				<input type="checkbox" id="item-{{item.id}}" ng-model="item.bought">
+	  				<label for="item-{{item.id}}" class="{{isBought(item.bought)}}">{{item.text}}<span></span></label>
+	  			</li>
+	  		</ul>
+	  		<form class="form-horizontal" ng-submit="addItem()">
+	  			<input type="text" ng-model="itemEntry" ng-model-instant placeholder="Type and hit Enter to add item">
+	  		</form>
+	  	</div>
+
+	  	<div class="footer">
+	  		<button class="btn btn-large btn-danger" ng-click="clearBought()">Remove Checked Items</button>
+	  	</div>
+  	</div>
+
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/underscore-min.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
